@@ -1,15 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
+<!-- ? -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- 多分画面サイズの話 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookers</title>
+    <!-- font変えるならここに設定 -->
   </head>
 
   <body>
+
+
+    
+ <!-- ヘッダーデザインここから -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample4">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        Bookers
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarEexample4">
+      <ul class="nav navbar-nav navbar-right">
+
+      <% if user_signed_in? %>
+
+          <li class="">
+          <%= link_to "Home", user_path(current_user) %></li>
+          <li class="">
+          <%= link_to"Users", "#" %></li>
+          <li class="">
+          <%= link_to"Books", "#" %></li>
+          <li class="">
+          <%= link_to"logout", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li class="">
+          <%= link_to"Home","/" %></li>
+          <li class="">
+          <%= link_to"About", about_path %></li>
+          <li class="">
+          <%= link_to"sign up", new_user_registration_path %></li>
+          <li class="">
+          <%= link_to"log in", user_session_path %></li>
+
+      <% end %>
+      </ul>
+    </div>
+</nav>
+<!-- ここまで -->
     <%= yield %>
+
   </body>
 </html>
