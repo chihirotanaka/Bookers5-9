@@ -8,7 +8,7 @@ class BooksController < ApplicationController
 # 投稿本の詳細
   def show
     @book = Book.find(params[:id])
-    @user = User.find(current_user_id)
+    @user = User.find(current_user.id)
   end
 # 本の感想新規作成
   def create
@@ -41,7 +41,7 @@ class BooksController < ApplicationController
        book.destroy
        flash[:notice]= 'Book was successfully destroyed.'
      else
-       redirect_to books_path
+       redirect_to user_path
     end
   end
 
