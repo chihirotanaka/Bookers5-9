@@ -1,14 +1,8 @@
-<h2>
-ここはbooksのshow(Book Ditail)
-</h2>
-
-<p id="notice"><%= notice %></p>
-
 <!-- サイドバー USER INFO -->
 
 <div class="container">
   <div class="row">
-
+    <p id="notice"><%= notice %></p>
     <div class="col-xs-3">
       <h2>User info</h2><br>
 
@@ -43,13 +37,7 @@
       <h2>New book</h2>
 
 　　　<!-- エラー文 -->
-      <% if @book.errors.any? %>
-        <ul>
-        <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-        </ul>
-      <% end %>
+
       <!-- エラー文 -->
 
       <h6>Title</h6>
@@ -67,10 +55,7 @@
 
 <!--  右テーブル -->
     <div class="col-xs-9">
-
-      <table class="table">
-      <H2>Books</H2>
-
+      <H2>Book detail</H2>
       <tr>
       <theat>
         <tr>
@@ -80,14 +65,14 @@
            <th colspan="2"></th>
         </tr>
       </theat>
-
+     <table class="table">
       <tbody>
         <tr>
-           <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
            <td><%= @book.title %></td>
            <td><%= @book.body %></td>
-           <td> <%= link_to "Edit", edit_book_path %></td>
-           <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "Are you sure?" %></td>
+           <td > <%= link_to "Edit", edit_book_path, class:"btn btn-info" %></td>
+           <td><%= link_to "Destroy", book_path(@book.id), class:"btn btn-danger", method: :delete, "data-confirm" => "Are you sure?" %></td>
 
         </tr>
       </tbody>

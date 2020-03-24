@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+
 <%= form_for(@user) do |f| %>
 
   <h2>User info</h2>
@@ -6,7 +9,7 @@
 
   <p>Image</p>
   <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  
+
   <br>
 
   <p>Introduction</p>
@@ -18,3 +21,5 @@
 
 
 <% end %>
+
+</div></div>

@@ -26,9 +26,10 @@
       </theat>
       </table>
       <!-- 自己紹介編集 -->
-
-         <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
-
+      <% if @user.id == current_user.id %>
+      <!-- もしユーザーidがログインユーザーなら　表示 -->
+      <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
+      <% end %>
       <!-- NEW BOOK -->
       <%= form_for(@book, url:'/books') do |f| %>
 
@@ -58,15 +59,14 @@
 <!--  右テーブル -->
     <div class="col-xs-9">
 
-      <table class="table">
-      <H2>Books</H2>
-
+      <H2>Users</H2>
+      <table class="table"> 
       <tr>
       <theat>
         <tr>
+           <th>Image</th>
+           <th>Name</th>
            <th></th>
-           <th>Title</th>
-           <th>Opinion</th>
            <th colspan="2"></th>
         </tr>
       </theat>
@@ -74,7 +74,7 @@
      <% @users.each do |user|%>
       <tbody>
         <tr>
-           <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
            <td><%= user.name %></td>
            <td><%=link_to"show",user_path(user.id) %></td>
         </tr>

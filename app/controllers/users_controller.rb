@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:notice]= 'Date was successfully update.'
     redirect_to user_path(@user.id)
   end
 

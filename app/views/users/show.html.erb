@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <!-- サイドバー USER INFO -->
 
 <div class="container">
   <div class="row">
+    <p id="notice"><%= notice %></p>
 
     <div class="col-xs-3">
       <h2>User info</h2><br>
@@ -65,7 +64,7 @@
       <tr>
       <theat>
         <tr>
-           <th></th>
+           <th th colspan="2"></th>
            <th>title</th>
            <th>body</th>
            <th colspan="2"></th>
@@ -74,9 +73,10 @@
 
      <% @books.each do |book|%>
       <tbody>
-        <tr>
-           <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
-           <td><%= book.title %></td>
+        <tr class="position-relative">
+           <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td></td>
+           <td><a href="/books" class="stretched-link"><%= book.title %></a></td>
            <td><%= book.body %></td>
         </tr>
       </tbody>

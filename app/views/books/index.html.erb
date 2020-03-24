@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <!-- サイドバー USER INFO -->
 
 <div class="container">
   <div class="row">
+    <p id="notice"><%= notice %></p>
 
     <div class="col-xs-3">
       <h2>User info</h2><br>
@@ -59,24 +58,23 @@
 
 <!--  右テーブル -->
     <div class="col-xs-9">
-
-      <table class="table">
       <H2>Books</H2>
+      <table class="table">
 
       <tr>
       <theat>
         <tr>
-           <th></th>
+           <th th colspan="2"></th>
            <th>Title</th>
            <th>Opinion</th>
-           <th colspan="2"></th>
         </tr>
       </theat>
 
      <% @books.each do |book|%>
       <tbody>
         <tr>
-           <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td></td>
            <td><%= book.title %></td>
            <td><%= book.body %></td>
         </tr>
