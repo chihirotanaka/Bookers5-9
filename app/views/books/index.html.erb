@@ -9,28 +9,29 @@
       <h2>User info</h2><br>
 
 
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
 
       <table class="table">
       <theat>
       <tbody>
         <tr>
            <th>name</th>
-           <td><%= "#" %></td>
+           <td><%= @user.name %></td>
         </tr>
         <tr>
            <th>introduction</th>
-           <td><%= "#" %></td>
+           <td><%= @user.introduction %></td>
         </tr>
       </tbody>
       </theat>
       </table>
       <!-- 自己紹介編集 -->
-      <p><%= "#" %></p>
+      <% if @user.id == current_user.id %>
 
 
-         <%= link_to"★", edit_user_path(current_user),class:" btn btn-secondary, btn-block"%>
 
+         <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
+         <% end %>
 
       <!-- NEW BOOK -->
       <%= form_for(@book, url:'/books') do |f| %>
@@ -63,6 +64,8 @@
 
       <table class="table">
       <H2>Books</H2>
+
+      <tr>
       <theat>
         <tr>
            <th></th>
@@ -71,15 +74,17 @@
            <th colspan="2"></th>
         </tr>
       </theat>
+
+     <% @books.each do |book|%>
       <tbody>
         <tr>
-           <td><%= attachment_image_tag @user, :profile_image, :fill, 20, 20, format: 'jpeg', fallback: "no_image.jpg" %></td>
-           <td><%= @book.title %></td>
-           <td><%= @book.body %></td>
-           <td> <%= link_to "Edit", edit_book_path(@book.id) %></td>
-           <td><%= link_to "Destroy", "/books/:id", method: :delete, "data-confirm" => "Are you sure?" %></td>
+           <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
+           <td><%= book.title %></td>
+           <td><%= book.body %></td>
         </tr>
       </tbody>
+      <% end %>
+
       </table>
     </div>
   </div>
