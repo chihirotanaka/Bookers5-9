@@ -9,10 +9,11 @@ class BooksController < ApplicationController
   end
 # 投稿本の詳細
   def show
-    @newbook =Book.new
-    @book =Book.find(params[:id])
-    @user =User.find(current_user.id)
-  end
+     @newbook =Book.new
+     @book =Book.find(params[:id])
+     @user =User.find(current_user.id)
+     @users =User.find(params[:id])
+   end
 # 本の感想新規作成
   def create
      @book =Book.new(book_params)
@@ -28,7 +29,7 @@ class BooksController < ApplicationController
   end
 # 本の感想編集
   def edit
-     @book =Book.find(params[:id])
+      @book =Book.find(params[:id])
   end
   def update
        book =Book.find(params[:id])
@@ -39,11 +40,9 @@ class BooksController < ApplicationController
   end
 # 本の感想削除
   def destroy
-    if book = Book.find(params[:id])
+       book = Book.find(params[:id])
        book.destroy
-     else
-       redirect_to book_path
-    end
+       redirect_to books_path
   end
 
   private

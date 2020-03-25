@@ -64,7 +64,7 @@
       <tr>
       <theat>
         <tr>
-           <th th colspan="2"></th>
+           <th></th>
            <th>title</th>
            <th>body</th>
            <th colspan="2"></th>
@@ -75,8 +75,9 @@
       <tbody>
         <tr class="position-relative">
            <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %></td>
-           <td></td>
-           <td><a href="/books" class="stretched-link"><%= book.title %></a></td>
+           <td><%= link_to book_path(book.id) do %>
+            <p><%= book.title %></p>
+            <% end %></td>
            <td><%= book.body %></td>
         </tr>
       </tbody>
