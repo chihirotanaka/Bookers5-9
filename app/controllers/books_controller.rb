@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+
 # 共有bookstop
   def index
      @book =Book.new
