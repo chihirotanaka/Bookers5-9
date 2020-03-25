@@ -25,10 +25,9 @@
       </theat>
       </table>
       <!-- 自己紹介編集 -->
-      <% if @user.id == current_user.id %>
-      <!-- もしユーザーidがログインユーザーなら　表示 -->
+
       <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
-      <% end %>
+
       <!-- NEW BOOK -->
       <%= form_for(@book) do |f| %>
 

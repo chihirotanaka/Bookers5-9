@@ -11,8 +11,8 @@ class BooksController < ApplicationController
   def show
      @newbook =Book.new
      @book =Book.find(params[:id])
-     @user =User.find(current_user.id)
-     @users =User.find(params[:id])
+     @user =User.find(@book.user_id)
+     @book.user =current_user
    end
 # 本の感想新規作成
   def create
