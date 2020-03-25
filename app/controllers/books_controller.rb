@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   def index
      @book =Book.new
      @books =Book.all
-     @user =User.find(current_user.id)
+     @user =current_user
      @users =User.all
   end
 # 投稿本の詳細
@@ -12,6 +12,7 @@ class BooksController < ApplicationController
      @newbook =Book.new
      @book =Book.find(params[:id])
      @user =User.find(@book.user_id)
+     # @book.user
      @book.user =current_user
    end
 # 本の感想新規作成
