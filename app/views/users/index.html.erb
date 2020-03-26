@@ -26,8 +26,8 @@
       <!-- 自己紹介編集 -->
 
         <%= link_to edit_user_path(current_user)  do %>
-        <li class= "btn btn-secondary, btn-block "></li>
-        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+        <li class= "btn btn-secondary, btn-block btn-lg btn-block">
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></li>
         <% end %>
 
       <!-- NEW BOOK -->
@@ -50,7 +50,7 @@
       <h6>Body</h6>
       <%= f.text_area :body%><br>
 
-      <%= f.submit'Create Book', class:"btn btn_secondary"%>
+      <%= f.submit 'Create Book', class: "btn btn_primary" %>
       <% end %>
       <br>
 
