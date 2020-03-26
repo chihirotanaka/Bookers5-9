@@ -27,10 +27,21 @@
       </table>
       <!-- 自己紹介編集 -->
 
-         <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
+         <%= link_to edit_user_path(current_user)  do %>
+        <li class= "btn btn-secondary, btn-block "></li>
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+        <% end %>
 
       <!-- NEW BOOK -->
-      <%= form_for(@book, url:'/books') do |f| %>
+      <%= form_for(@newbook, url:'/books') do |f| %>
+
+      <% if @newbook.errors.any? %>
+        <ul>
+          <% @newbook.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+　　　　<% end %>
 
       <h2>New book</h2>
 
@@ -69,16 +80,21 @@
             <%= @user.name %>
             <% end %>
            </td>
-
             <td>
             <%= @book.title %>
             </td>
            <td><%= @book.body %>
            </td>
-           <td > <%= link_to "Edit", edit_book_path, class:"btn btn-info" %>
+　　　　<!-- もしidが一緒なら表示 -->
+    <% if @book.user.id == current_user.id %>
+           <td >
+            <%= link_to "Edit", edit_book_path, class:"btn btn-info" %>
            </td>
-           <td><%= link_to "Destroy", book_path(@book), class:"btn btn-danger", method: :delete, method: :delete, "data-confirm" => "Are you sure?" %></td>
-
+           <td>
+            <%= link_to "Destroy", book_path(@book), class:"btn btn-danger", method: :delete, method: :delete, "data-confirm" => "Are you sure?" %>
+          </td>
+    <% end %>
+        <!-- ここまで -->
 
         </tr>
       </tbody>

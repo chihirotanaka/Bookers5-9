@@ -3,11 +3,21 @@
 <div class="container">
   <div class="row">
     <p id="notice"><%= notice %></p>
+
+<% if @book.errors.any? %>
+        <ul>
+        <h3><%= @book.errors.count %> errors prohibited this obj from being saved:</h3>
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+        </ul>
+      <% end %>
+
     <div class="col-xs-3">
+
       <h2>User info</h2><br>
 
-
-      <td><%= attachment_image_tag @user,
+      <td><%= attachment_image_tag current_user,
        :profile_image, :fill, 70, 70, format: 
        'jpeg', fallback: "no_image.jpg" %></td>
 
@@ -16,31 +26,26 @@
       <tbody>
         <tr>
            <th>name</th>
-           <td><%= @user.name %></td>
+           <td><%= current_user.name %></td>
         </tr>
         <tr>
            <th>introduction</th>
-           <td><%= @user.introduction %></td>
+           <td><%= current_user.introduction %></td>
         </tr>
       </tbody>
       </theat>
       </table>
       <!-- 自己紹介編集 -->
 
-         <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
+          <%= link_to edit_user_path(current_user)  do %>
+        <li class= "btn btn-secondary, btn-block "></li>
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+        <% end %>
 
       <!-- NEW BOOK -->
-      <%= form_for(@book, url:'/books') do |f| %>
+      <%= form_for(@book) do |f| %>
 
       <h2>New book</h2>
-
-      <% if @book.errors.any? %>
-        <ul>
-        <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-        </ul>
-      <% end %>
 
       <h6>Title</h6>
       <%= f.text_field :title%>

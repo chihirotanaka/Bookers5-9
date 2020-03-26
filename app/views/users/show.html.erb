@@ -26,12 +26,13 @@
       </table>
       <!-- 自己紹介編集 -->
 
-      <%= link_to"★", edit_user_path(@user),class:" btn btn-secondary, btn-block"%>
+     <%= link_to edit_user_path(current_user)  do %>
+        <li class= "btn btn-secondary, btn-block "></li>
+        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+        <% end %>
 
       <!-- NEW BOOK -->
-      <%= form_for(@book) do |f| %>
-
-      <h2>New book</h2>
+      <%= form_for(@book, url:'/books') do |f| %>
 
       <% if @book.errors.any? %>
         <ul>
@@ -40,6 +41,8 @@
         <% end %>
         </ul>
       <% end %>
+
+      <h2>New book</h2>
 
       <h6>Title</h6>
       <%= f.text_field :title%>
