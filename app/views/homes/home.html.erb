@@ -1,6 +1,7 @@
 <div class="container">
+    <div class="row">
 
-  <div class="row">
+  	<p id="notice"><%= notice %></p>
 
 <strong>
 	<h1>Welcome to
@@ -11,16 +12,7 @@
 <P>you can share and exchange your opinions,inpressions,<br>
 and emotions about various books!</P><br>
 
-<%= link_to new_user_session_path do %>
-<div class= "btn btn-default">
-	<p>Log in</p>
-</div>
-<% end %>
-<%= link_to new_user_registration_path do %>
-<div class= "btn btn-default">
-	<p>Sign Up</p>
-</div>
-<% end %>
-
-</div>
+<%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-default btn-lg" %>
+    </div>
 </div>
